@@ -1,0 +1,18 @@
+html{
+    font-size: 100%;  // control zoom level
+    box-sizing: border-box; // include padding in final width
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+a, a:visited, a:hover{
+    text-decoration: none;
+}
+
+body{
+    margin: 0;  
+    background-color: #4b4b4b;
+}
