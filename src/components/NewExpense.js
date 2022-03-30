@@ -3,17 +3,23 @@ import { nanoid } from 'nanoid'
 
 const NewExpense = (props) => {
 
+    const [addingExpense, setAddingExpense] = React.useState(false)
+
+    const handleAddingExpense = () => {
+        setAddingExpense(previous => !previous)
+    }
+
     const [userInput, setUserInput] = React.useState({
-        enteredTitle: "",
-        enteredAmount: "",
-        enteredDate: ""
+        title: "",
+        amount: "",
+        date: ""
     })
 
     const titleChangeHandler = (e) => {
         setUserInput(prevInput => {
             return {
                 ...prevInput,
-                enteredTitle: e.target.value
+                title: e.target.value
             }
         })
     }
@@ -22,7 +28,7 @@ const NewExpense = (props) => {
         setUserInput(prevInput => {
             return {
                 ...prevInput,
-                enteredAmount: parseInt(e.target.value)
+                amount: parseInt(e.target.value)
             }
         })
     }
@@ -31,7 +37,7 @@ const NewExpense = (props) => {
         setUserInput(prevInput => {
             return {
                 ...prevInput,
-                enteredDate: e.target.value
+                date: e.target.value
             }
         })
     }
@@ -39,69 +45,89 @@ const NewExpense = (props) => {
     const submitHandler = (e) => {
         e.preventDefault()
 
-        const expenseData = {
-            title: userInput.enteredTitle,
-            amount: userInput.enteredAmount,
-            date: new Date(userInput.enteredDate),
+        const addExpense = {
+            ...userInput,
+            date: new Date(userInput.date),
             id: nanoid()
         }
-        
-        props.addExpenseHandler(expenseData)
+
+        props.addExpenseHandler(addExpense)
 
         setUserInput({
-            enteredTitle: "",
-            enteredAmount: "",
-            enteredDate: ""
+            title: "",
+            amount: "",
+            date: ""
         })
+
+        setAddingExpense(false)
     }
 
     return (
-        <div className="new-expense">
 
-            <form onSubmit={submitHandler}>
-                <div className="new-expense-controls">
+        addingExpense ?
 
-                    <div className="new-expense-control">
-                        <label>Title</label>
-                        <input
-                            type="text"
-                            value={userInput.enteredTitle}
-                            onChange={titleChangeHandler}
-                        />
+            <div className="new-expense">
+
+                <form onSubmit={submitHandler}>
+                    <div className="new-expense-controls">
+
+                        <div className="new-expense-control">
+                            <label>Title</label>
+                            <input
+                                type="text"
+                                value={userInput.title}
+                                onChange={titleChangeHandler}
+                            />
+                        </div>
+
+
+                        <div className="new-expense-control">
+                            <label>Amount</label>
+                            <input
+                                type="number"
+                                min="0.01"
+                                step="0.01"
+                                value={userInput.amount}
+                                onChange={amountChangeHandler}
+                            />
+                        </div>
+
+
+                        <div className="new-expense-control">
+                            <label>Date</label>
+                            <input
+                                type="date"
+                                min="2019-01-01"
+                                max="2022-12-31"
+                                value={userInput.date}
+                                onChange={dateChangeHandler}
+                            />
+                        </div>
+
                     </div>
 
+                    <div className="new-expense-actions">
 
-                    <div className="new-expense-control">
-                        <label>Amount</label>
-                        <input
-                            type="number"
-                            min="0.01"
-                            step="0.01"
-                            value={userInput.enteredAmount}
-                            onChange={amountChangeHandler}
-                        />
+                        <button
+                            type="submit"
+                            onClick={handleAddingExpense}
+                        >Cancel</button>
+
+                        <button type="submit">Add Expense</button>
+
                     </div>
+                </form>
 
+            </div>
 
-                    <div className="new-expense-control">
-                        <label>Date</label>
-                        <input
-                            type="date"
-                            min="2019-01-01"
-                            max="2022-12-31"
-                            value={userInput.enteredDate}
-                            onChange={dateChangeHandler}
-                        />
-                    </div>
+            :
 
-                </div>
-
-                <div className="new-expense-actions">
-                    <button type="submit">Add Expense</button>
-                </div>
-            </form>
-
-        </div>
+            <div className="new-expense">
+                <button
+                    onClick={handleAddingExpense}
+                    className="new-expense-actions"
+                >Add New Expense</button>
+            </div>
     )
 }
 

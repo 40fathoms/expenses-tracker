@@ -2,8 +2,9 @@
 @import "mixins";
 @import "config";
 
-@import "expenseItem";
+@import "expenses";
 @import "newExpense";
+@import "chart";
 
 .card{
     border-radius: 12px;

@@ -39,6 +39,37 @@ body {
   max-width: 95%;
 }
 
+.expenses-filter {
+  color: white;
+  padding: 0 1rem;
+}
+
+.expenses-filter-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.expenses-filter-control label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.expenses-filter-control select {
+  font: inherit;
+  padding: 0.5rem 3rem;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
 .expenses-list {
   list-style: none;
   padding: 0;
@@ -49,7 +80,7 @@ body {
   text-align: center;
 }
 
-.expense-item {
+.expenses-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,7 +95,7 @@ body {
   background-color: #4b4b4b;
 }
 
-.expense-item h2 {
+.expenses-item h2 {
   font-size: 1rem;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -73,7 +104,7 @@ body {
   color: white;
 }
 
-.expense-item-description {
+.expenses-item-description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,7 +126,7 @@ body {
           flex: 1;
 }
 
-.expense-item-price {
+.expenses-item-price {
   font-size: 1rem;
   font-weight: bold;
   color: white;
@@ -106,10 +137,10 @@ body {
 }
 
 @media (min-width: 40em) {
-  .expense-item h2 {
+  .expenses-item h2 {
     font-size: 1.25rem;
   }
-  .expense-item-description {
+  .expenses-item-description {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -124,13 +155,13 @@ body {
         -ms-flex: 1;
             flex: 1;
   }
-  .expense-item-price {
+  .expenses-item-price {
     font-size: 1.25rem;
     padding: 0.5rem 1.5rem;
   }
 }
 
-.expense-date {
+.expenses-date {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -152,17 +183,17 @@ body {
           justify-content: center;
 }
 
-.expense-date-day {
+.expenses-date-day {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.expense-date-month {
+.expenses-date-month {
   font-size: 0.75rem;
   font-weight: bold;
 }
 
-.expense-date-year {
+.expenses-date-year {
   font-size: 0.75rem;
 }
 
@@ -222,6 +253,65 @@ body {
 
 .new-expense-actions {
   text-align: right;
+}
+
+.chart {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #f8dfff;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 10rem;
+}
+
+.chart-bar {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chart-bar-inner {
+  height: 100%;
+  width: 15px;
+  border: 1px solid #313131;
+  border-radius: 12px;
+  background-color: #c3b4f3;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.chart-bar-fill {
+  background-color: #4826b9;
+  width: 100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.chart-bar-label {
+  font-weight: bold;
+  font-size: 0.5rem;
+  text-align: center;
 }
 
 .card {
